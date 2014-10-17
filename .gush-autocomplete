@@ -1,0 +1,100 @@
+#!/bin/sh
+_gush()
+{
+    local cur prev coms opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    coms="help list branch:changelog branch:delete branch:fork branch:push branch:sync core:alias core:configure core:init core:update issue:assign issue:close issue:create issue:label:assign issue:label:list issue:list issue:list:milestones issue:show issue:take meta:header pull-request:assign pull-request:close pull-request:create pull-request:fabbot-io pull-request:fixer pull-request:label:list pull-request:list pull-request:list:milestones pull-request:merge pull-request:pat-on-the-back pull-request:semver pull-request:squash pull-request:switch-base release:create release:list release:remove version-eye:check"
+    opts="--help --quiet --verbose --version --ansi --no-ansi --no-interaction"
+
+    if [[ ${COMP_CWORD} = 1 ]] ; then
+        COMPREPLY=($(compgen -W "${coms}" -- ${cur}))
+        return 0
+    fi
+
+    case "${prev}" in
+            help)
+            opts="${opts} --xml --format --raw"
+            ;;    list)
+            opts="${opts} --xml --raw --format"
+            ;;    branch:changelog)
+            opts="${opts} --org --repo"
+            ;;    branch:delete)
+            opts="${opts} --org --repo"
+            ;;    branch:fork)
+            opts="${opts} --org --repo"
+            ;;    branch:push)
+            opts="${opts} --org --repo"
+            ;;    branch:sync)
+            opts="${opts} --org --repo"
+            ;;    core:alias)
+            opts="${opts} --s"
+            ;;    core:configure)
+            opts="${opts} --adapter --issue tracker --autocomplete --org --repo"
+            ;;    core:init)
+            opts="${opts} --adapter --issue tracker --meta"
+            ;;    core:update)
+            opts="${opts} --pre --redo --upgrade"
+            ;;    issue:assign)
+            opts="${opts} --org --repo"
+            ;;    issue:close)
+            opts="${opts} --message --org --repo"
+            ;;    issue:create)
+            opts="${opts} --issue_title --issue_body --org --repo"
+            ;;    issue:label:assign)
+            opts="${opts} --new --issues --pull-requests --label --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    issue:label:list)
+            opts="${opts} --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    issue:list)
+            opts="${opts} --label --milestone --assignee --creator --mentioned --state --sort --direction --type --since --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    issue:list:milestones)
+            opts="${opts} --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    issue:show)
+            opts="${opts} --org --repo"
+            ;;    issue:take)
+            opts="${opts} --org --repo"
+            ;;    meta:header)
+            opts="${opts} --dry-run --no-local --template"
+            ;;    pull-request:assign)
+            opts="${opts} --org --repo"
+            ;;    pull-request:close)
+            opts="${opts} --message --org --repo"
+            ;;    pull-request:create)
+            opts="${opts} --base --source-org --source-branch --issue --title --org --repo --template"
+            ;;    pull-request:fabbot-io)
+            opts="${opts} --org --repo"
+            ;;    pull-request:label:list)
+            opts="${opts} --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    pull-request:list)
+            opts="${opts} --state --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    pull-request:list:milestones)
+            opts="${opts} --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    pull-request:merge)
+            opts="${opts} --no-comments --remote --org --repo"
+            ;;    pull-request:pat-on-the-back)
+            opts="${opts} --org --repo"
+            ;;    pull-request:semver)
+            opts="${opts} --major --minor --patch --org --repo"
+            ;;    pull-request:squash)
+            opts="${opts} --org --repo"
+            ;;    pull-request:switch-base)
+            opts="${opts} --org --repo"
+            ;;    release:create)
+            opts="${opts} --target-commitish --name --body --draft --prerelease --asset-file --asset-name --asset-content-type --replace --org --repo"
+            ;;    release:list)
+            opts="${opts} --table-layout --table-no-header --table-no-footer --org --repo"
+            ;;    release:remove)
+            opts="${opts} --org --repo"
+            ;;    version-eye:check)
+            opts="${opts} --stable --org --repo"
+            ;;
+        esac
+
+    COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
+    return 0;
+}
+
+complete -o default -F _gush gush
+COMP_WORDBREAKS=${COMP_WORDBREAKS//:}
+

@@ -42,12 +42,19 @@
 	contributors = shortlog --summary --numbered
         # Cherry Pick
         pick = cherry-pick
+	last = log -1 HEAD
+
+[apply]
+
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
 [credential]
 	helper = osxkeychain
 [core]
 	excludesfile = ~/.gitignore
         attributesfile = ~/.gitattributes
-        #whitespace = space-before-tab,indent-with-non-tab,trailing-space
+        whitespace = space-before-tab,indent-with-non-tab,trailing-space
         # Make `git rebase` safer on OS X
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	trustctime = false
@@ -60,8 +67,9 @@
     keepBackup = false
     trustExitCode = false
 
-#[diff]
-	#external = /Applications/kdiff3.app/Contents/MacOS/kdiff3
+[diff]
+    renames = copies
+    #external = /Applications/kdiff3.app/Contents/MacOS/kdiff3
 [merge]
 	tool = kdiff3
         log = true
@@ -119,5 +127,3 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-[alias]
-	last = log -1 HEAD

@@ -12,6 +12,7 @@ alias s='php app/console'
 alias phplint='find . -name "*.php" -exec php -l {} \;'
 alias c='composer'
 alias g='git'
+alias master='git checkout master'
 
 # Shortcuts
 alias projects="cd ~/projects"

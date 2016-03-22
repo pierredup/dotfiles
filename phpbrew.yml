@@ -1,0 +1,57 @@
+variants:
+    dev:
+        bcmath: ~
+        bz2: ~
+        calendar: ~
+        cli: ~
+        ctype: ~
+        curl: ~
+        dom: ~
+        exif: ~
+        fileinfo: ~
+        filter: ~
+        ftp: ~
+        fpm: ~
+        gd: ~
+        gettext: ~
+        gmp: ~
+        hash: ~
+        iconv: ~
+        icu: ~
+        imap: ~
+        inifile: ~
+        inline: ~
+        intl: ~
+        ipc: ~
+        ipv6: ~
+        json: ~
+        mbregex: ~
+        mbstring: ~
+        mcrypt: ~
+        mhash: ~
+        mysql: ~
+        opcache: ~
+        openssl:
+          - --with-openssl=/usr/local/opt/openssl
+        pcntl: ~
+        pcre: ~
+        pdo: ~
+        phar: ~
+        phpdbg: ~
+        posix: ~
+        readline: ~
+        session: ~
+        soap: ~
+        sockets: ~
+        sqlite: ~
+        tokenizer: ~
+        wddx: ~
+        xml: ~
+        xml_all: ~
+        xmlrpc: ~
+        zip: ~
+        zlib: ~
+extensions:
+    dev:
+        opcache: ~
+        xdebug: ~

@@ -9,10 +9,15 @@ alias -- -="cd -"
 
 # Development Stuff
 alias s='php app/console'
+alias magento='php bin/magento'
 alias phplint='find . -name "*.php" -exec php -l {} \;'
 alias c='composer'
 alias g='git'
 alias master='git checkout master'
+
+alias compose='docker-compose'
+alias up='docker-compose up'
+alias machine='docker-machine'
 
 # Shortcuts
 alias projects="cd ~/projects"

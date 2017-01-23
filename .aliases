@@ -9,15 +9,24 @@ alias -- -="cd -"
 
 # Development Stuff
 alias s='php app/console'
+alias sb='php bin/console'
 alias magento='php bin/magento'
 alias phplint='find . -name "*.php" -exec php -l {} \;'
 alias c='composer'
 alias g='git'
 alias master='git checkout master'
+alias push='git push'
+alias pull='git pull'
+alias download='it2dl'
+
+#Docker
+alias drmi='docker rmi $(docker images --filter "dangling=true" -q --no-trunc)'
+alias drm='docker rm $(docker ps -qa --no-trunc --filter "status=exited")'
 
 alias compose='docker-compose'
 alias up='docker-compose up'
 alias machine='docker-machine'
+alias kube='minikube'
 
 # Shortcuts
 alias projects="cd ~/projects"
@@ -35,11 +44,16 @@ alias l="ls -lF ${colorflag}"
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
 
+# List all files colorized in long format, including dot files
+alias lah="ls -laFh ${colorflag}"
+
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 alias ls="command ls ${colorflag}"
 export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+
+alias rf="rm -Rf"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -60,8 +74,8 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
 
 # View HTTP traffic
-alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+#alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+#alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # JavaScriptCore REPL
 jscbin="/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc";
@@ -75,11 +89,11 @@ alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
+# alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; sudo npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
+alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # View HTTP traffic
@@ -93,3 +107,5 @@ command -v sha1sum > /dev/null || alias sha1sum="shasum"
 # Also, clear Apple’s System Logs to improve shell startup speed.
 # Finally, clear download history from quarantine. https://mths.be/bum
 alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
+
+alias flushdns="sudo killall -HUP mDNSResponder"

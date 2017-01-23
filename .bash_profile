@@ -1,5 +1,13 @@
-export PATH="$HOME/bin:/usr/local/bin:~/.composer/vendor/bin:$PATH"
+export GOPATH=$HOME/go
+
+export PATH="$HOME/bin:/usr/local/bin:~/.composer/vendor/bin:/usr/local/sbin:/usr/local/opt/go/libexec/bin:/Applications/Atlassian/atlassian-plugin-sdk-6.2.4/bin:$GOPATH/bin:/Users/pierre/Library/Android/sdk/platform-tools:/Users/pierre/Library/Android/sdk/tools:$PATH"
 export EDITOR=nano
+
+export HOMEBREW_GITHUB_API_TOKEN="***REMOVED***"
+export DYLD_LIBRARY_PATH=/usr/lib/oracle64/
+export GOROOT=/usr/local/opt/go/libexec
+
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -22,6 +30,11 @@ export LC_CTYPE="en_US.UTF-8"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2 | tr ' ' '\n')" scp sftp ssh;
+
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    source $(brew --prefix)/etc/bash_completion
+fi
 
 if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 	source "$(brew --prefix)/share/bash-completion/bash_completion";
@@ -46,13 +59,20 @@ for file in ~/.{bash_prompt,functions,aliases,git-completion,ssh-completion,symf
 done;
 unset file;
 
+source $HOME/.completion/minikube
+
 source $HOME/.phpbrew/bashrc
 source $HOME/.oh-my-git/prompt.sh
 
 eval "$(hub alias -s)"
 
 # The next line updates PATH for the Google Cloud SDK.
-source '~/google-cloud-sdk/path.bash.inc'
+source $HOME/google-cloud-sdk/path.bash.inc
 
 # The next line enables shell command completion for gcloud.
-source '~/google-cloud-sdk/completion.bash.inc'
+source $HOME/google-cloud-sdk/completion.bash.inc
+source $HOME/z.sh
+
+#eval $(docker-machine env csbill-io)
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

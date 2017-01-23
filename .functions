@@ -186,3 +186,19 @@ function getcertnames() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+function update() {
+    sudo softwareupdate -i -a;
+    sudo gem update --system;
+    sudo gem update;
+    brew update;
+    brew upgrade;
+    brew cleanup;
+    npm install npm -g;
+    npm update -g;
+    phpbrew self-update;
+    composer self-update;
+    php-cs-fixer self-update;
+    symfony self-update
+    upgrade_oh_my_zsh
+}

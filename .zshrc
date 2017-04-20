@@ -55,7 +55,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(autoenv composer docker git git-extras history ng node npm nyan osx phing pip redis-cli screen sudo symfony2 web-search kubectl yarn laravel laravel5)
+plugins=(adb ant autoenv bower brew composer cp docker docker-compose git git-extras github go golang gulp history httpie ng node npm nyan osx phing pip redis-cli screen symfony2 web-search z kubectl yarn laravel laravel5)
 
 source $ZSH/oh-my-zsh.sh
 

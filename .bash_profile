@@ -3,7 +3,7 @@ export GOPATH=$HOME/go
 export PATH="$HOME/bin:/usr/local/bin:~/.composer/vendor/bin:/usr/local/sbin:/usr/local/opt/go/libexec/bin:/Applications/Atlassian/atlassian-plugin-sdk-6.2.4/bin:$GOPATH/bin:/Users/pierre/Library/Android/sdk/platform-tools:/Users/pierre/Library/Android/sdk/tools:$PATH"
 export EDITOR=nano
 
-export HOMEBREW_GITHUB_API_TOKEN="0bf2686953eaa704a695cae9f2f8b5a9f6aa1b85"
+export HOMEBREW_GITHUB_API_TOKEN=""
 export DYLD_LIBRARY_PATH=/usr/lib/oracle64/
 export GOROOT=/usr/local/opt/go/libexec
 

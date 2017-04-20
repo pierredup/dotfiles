@@ -64,14 +64,12 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 export EDITOR=nano
-export HOMEBREW_GITHUB_API_TOKEN="0bf2686953eaa704a695cae9f2f8b5a9f6aa1b85"
+export HOMEBREW_GITHUB_API_TOKEN=""
 export GOROOT=/usr/local/opt/go/libexec
 export JAVA_HOME=$(/usr/libexec/java_home)
 #export DYLD_LIBRARY_PATH=/usr/lib/oracle64/
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export BITBUCKET_USERNAME=info@csbill.org
-export BITBUCKET_PASSWORD=stamerac01
 export COMPOSER_ALLOW_XDEBUG=1
 
 # You may need to manually set your language environment
